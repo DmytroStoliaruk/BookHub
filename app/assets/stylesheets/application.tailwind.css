@@ -17,7 +17,7 @@
   }
 
   .block-form-area {
-    @apply block rounded-md border border-gray-500 w-full h-250px;
+    @apply block rounded-md border border-gray-500 w-full h-60;
   }
 }
 
