@@ -2,12 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium;
+  }
+
+  .btn-gray {
+    @apply ml-2 rounded-lg py-3 px-5 bg-gray-200 inline-block font-medium;    
+  }
+
+  .block-form-text {
+    @apply block rounded-md border border-gray-500 w-full;
+  }
+
+  .block-form-area {
+    @apply block rounded-md border border-gray-500 w-full h-250px;
   }
 }
 
-*/
+.truncate-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header, .footer {
+  background-color: #1E3A8A;
+  color: rgb(253, 253, 12);
+  padding: 20px ;
+  text-align: center;
+}
+
+.books-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.book-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.main-content {
+  margin: 40px 0;
+}

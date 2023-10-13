@@ -1,28 +1,31 @@
-<div id="<%= dom_id book %>">
+<div class="book-item relative h-[450px] hover:shadow-2xl">
+  <div id="<%= dom_id book %>">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= book.title %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Title:</strong>
+      <%= book.title %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Author:</strong>
-    <%= book.author %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Author:</strong>
+      <%= book.author %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Isbn:</strong>
-    <%= book.isbn %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Isbn:</strong>
+      <%= book.isbn %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= book.description %>
-  </p>
+    <p class="my-5 truncate-lines" >
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= book.description %>  
+    </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this book", book, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+    <% if action_name != "show" %>
+      <%= link_to "Show this book", book, class: "btn-gray absolute bottom-2" %>
+    <% end %>
 
+  </div>
 </div>
+
+  

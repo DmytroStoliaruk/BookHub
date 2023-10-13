@@ -13,25 +13,25 @@
   
   <div class="my-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, class: "block-form-text" %>
   </div>
 
   <div class="my-5">
     <%= form.label :author %>
-    <%= form.text_field :author, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :author, class: "block-form-text" %>
   </div>
 
   <div class="my-5">
     <%= form.label :isbn %>
-    <%= form.text_field :isbn, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :isbn, class: "block-form-text" %>
   </div>
 
   <div class="my-5">
     <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :description, class: "block-form-area" %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= form.submit class: "btn-gray" %>
   </div>
 <% end %>
