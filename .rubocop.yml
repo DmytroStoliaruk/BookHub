@@ -1,0 +1,11 @@
+AllCops:
+  NewCops: enable
+
+# replace 'single_quotes' to "double_quotes"
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+

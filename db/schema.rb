@@ -14,14 +14,14 @@
 
 ActiveRecord::Schema[7.0].define(version: 20_231_012_065_404) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'books', force: :cascade do |t|
-    t.string 'title'
-    t.string 'author'
-    t.string 'isbn'
-    t.text 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "isbn"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end
