@@ -7,7 +7,7 @@
   <div id="books" class="min-w-full">
     <div class="main-content container">
       <div class="books-list">
-        <%= render @books %>
+        <%= render partial: "books/book", collection: @books %>
         </div>
       </div>
   </div>

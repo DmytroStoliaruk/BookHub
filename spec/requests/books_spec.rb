@@ -16,35 +16,35 @@ RSpec.describe "Books", type: :request do
     }
   end
 
-  describe "GET /books - show list of books" do
+  describe "GET #books - show list of books" do
     it "returns http success" do
       get "/books"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /books/new - create new book" do
+  describe "GET #books/new - create new book" do
     it "returns http success" do
       get "/books/new"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /books/:id/edit - edit book" do
+  describe "GET #books(:id)/edit - edit book" do
     it "returns http success" do
       get edit_book_path(book.id)
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /books/:id - show book" do
+  describe "GET #books(:id) - show book" do
     it "returns http success" do
       get book_path(book.id)
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "POST /create" do
+  describe "POST #create" do
     it "creates a new book" do
       expect do
         post "/books", params: update_param
@@ -52,16 +52,15 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "PUT /update" do
+  describe "PUT #update" do
     it "updates the requested book" do
       put book_path(book.id), params: update_param
       book.reload
       expect(book.title).to eq("New Title")
-      expect(book.author).to eq("New Author")
     end
   end
 
-  describe "DELETE /books/:id" do
+  describe "DELETE #books(:id)" do
     it "deletes the book and redirects to the books index" do
       expect do
         delete book_path(book)

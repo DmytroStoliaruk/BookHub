@@ -3,20 +3,17 @@
 require "rails_helper"
 
 RSpec.describe Book, type: :model do
-  # create object for testing
-  subject { described_class.new(title: "Test Book", author: "Test Author", isbn: "123-12345-123-1234") }
 
-  it "is valid with valid attributes" do
-    expect(subject).to be_valid
-  end
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:author) }
 
-  it "is not valid without a title" do
-    subject.title = nil
-    expect(subject).to_not be_valid
+  it 'is valid with valid attributes' do
+    book = FactoryBot.build(:book,
+                            title: Faker::Book.title,
+                            author: Faker::Book.author,
+                            isbn: Faker::Number.number(digits: 13).to_s,
+                            description: Faker::Lorem.paragraph)
+    expect(book).to be_valid
   end
-
-  it "is not valid without an author" do
-    subject.author = nil
-    expect(subject).to_not be_valid
-  end
-end
+  
+end  
