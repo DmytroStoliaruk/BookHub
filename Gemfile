@@ -21,11 +21,7 @@ gem "stimulus-rails"
 
 gem "tailwindcss-rails"
 
-<<<<<<< HEAD
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-=======
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
->>>>>>> 18bebef (add private methods to BooksController)
 
 gem "bootsnap", require: false
 
@@ -35,7 +31,7 @@ gem "elasticsearch", "~> 8.10"
 gem "searchkick", "~> 5.3"
 
 group :development, :test do
-  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "debug", platforms: [:mri, :mingw, :x64_mingw]
   gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails", "~> 5.0"
