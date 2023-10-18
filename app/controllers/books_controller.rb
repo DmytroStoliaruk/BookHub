@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-
   def index
     @books = collection
   end
@@ -49,11 +48,11 @@ class BooksController < ApplicationController
   end
 
   def collection
-    Book.order(:id)
+    Book.ordered
   end
 
   def resourse
     collection.find(params[:id])
   end
-
+  
 end
