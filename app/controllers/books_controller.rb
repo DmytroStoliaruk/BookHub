@@ -3,7 +3,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.order(:id)
+    @books = collection
   end
 
   def new
@@ -11,15 +11,15 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = resourse
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = resourse
   end
 
   def create
-    @book = Book.new(params.require(:book).permit(:title, :author, :isbn, :description))
+    @book = Book.new(book_params)
     if @book.save
       redirect_to @book, notice: "Book was successfully created."
     else
@@ -28,8 +28,8 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
-    if @book.update(params.require(:book).permit(:title, :author, :isbn, :description))
+    @book = resourse
+    if @book.update(book_params)
       redirect_to @book, notice: "Book was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
@@ -37,9 +37,23 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    @book = resourse
     @book.destroy
     redirect_to books_url, notice: "Book was successfully destroyed.", status: :see_other
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :author, :isbn, :description)
+  end
+
+  def collection
+    Book.order(:id)
+  end
+
+  def resourse
+    collection.find(params[:id])
   end
 
 end
