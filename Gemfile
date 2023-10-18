@@ -33,8 +33,8 @@ gem "tailwindcss-rails"
 gem "devise"
 gem "elasticsearch", "~> 8.10"
 gem "searchkick", "~> 5.3"
-gem 'shoulda'
-gem 'shoulda-matchers', '~> 5.0'
+gem 'shoulda', '~> 4.0'
+gem 'shoulda-matchers', '~> 4.0'
 gem 'factory_bot_rails'
 gem 'faker'
 
