@@ -54,15 +54,16 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "PUT #update" do
+  describe "PATCH #update" do
     it "update book" do
       patch book_path(book), params: { book: new_params }
       book.reload
 
-      expect(book.title).to eq("New Title")
-      expect(book.author).to eq("New Author")
-      expect(book.isbn).to eq("1111-2222-000")
-      expect(book.description).to eq("New Description")
+      new_params.each_pair do |key, value|
+        expect(book[key]).to eq(value)
+      end
+
+      expect(response).to redirect_to(book_path(book))
     end
 
     it "update book with invalid parameters" do
@@ -73,7 +74,6 @@ RSpec.describe "Books", type: :request do
 
   describe "DELETE #books(:id)" do
     it "deletes the book and redirects to the books index" do
-
       book = Book.create valid_params
 
       expect {
@@ -83,5 +83,4 @@ RSpec.describe "Books", type: :request do
       expect(response).to redirect_to(books_path)
     end
   end
-
 end
