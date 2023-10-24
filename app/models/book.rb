@@ -3,5 +3,5 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :isbn, presence: true
 
-  scope :ordered, -> { order(title: :asc) }
+  scope :ordered, -> { order("title") }
 end

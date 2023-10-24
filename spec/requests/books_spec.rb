@@ -14,6 +14,7 @@ RSpec.describe "Books", type: :request do
   describe "GET #books - show list of books" do
     it "returns http success" do
       get books_url
+
       expect(response).to be_successful
     end
   end 
@@ -21,6 +22,7 @@ RSpec.describe "Books", type: :request do
   describe "GET #books/new - create new book" do
     it "returns http success" do
       get new_book_url
+
       expect(response).to be_successful
     end
   end
@@ -28,6 +30,7 @@ RSpec.describe "Books", type: :request do
   describe "GET #books(:id)/edit - edit book" do
     it "returns http success" do
       get edit_book_url(book.id)
+
       expect(response).to be_successful   
     end
   end
@@ -35,6 +38,7 @@ RSpec.describe "Books", type: :request do
   describe "GET #books(:id) - show book" do
     it "returns http success" do
       get book_path(book.id)
+
       expect(response).to be_successful
     end
   end
@@ -48,6 +52,7 @@ RSpec.describe "Books", type: :request do
 
     it "creates a new book with invalid attributes)" do
         post books_url, params: { book: invalid_params }
+
         expect(response).to be_unprocessable
     end
   end
@@ -55,6 +60,7 @@ RSpec.describe "Books", type: :request do
   describe "PATCH #update" do
     it "update book" do
       patch book_path(book), params: { book: new_params }
+      
       book.reload
 
       new_params.each_pair do |key, value|
@@ -66,6 +72,7 @@ RSpec.describe "Books", type: :request do
 
     it "update book with invalid parameters" do
       patch book_path(book), params: { book: invalid_params }
+
       expect(response).to be_unprocessable
     end
   end

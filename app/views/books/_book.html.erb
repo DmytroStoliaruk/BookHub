@@ -1,5 +1,5 @@
 <div class="book-item relative h-[450px] hover:shadow-2xl">
-  <a href="<%= book_path(book) %>">
+  <%= link_to book_path(book) do %>
     <div id="<%= dom_id book %>">
 
       <p class="my-5">
@@ -23,5 +23,5 @@
       </p>
 
     </div>
-  </a>
+  <% end %>
 </div>
