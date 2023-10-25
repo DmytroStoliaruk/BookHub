@@ -18,9 +18,13 @@
     <div class="header container">
         Welcome to BookHub!
     </div>
+    
+    <div class="container">
+      <%= render "layouts/flash" %>
+    </div>
 
     <div>
-      <main class="container mx-auto mt-28 px-5 flex">
+      <main class="container">
         <%= yield %>
       </main>
     </div>

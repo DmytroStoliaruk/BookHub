@@ -19,6 +19,14 @@
   .block-form-area {
     @apply block rounded-md border border-gray-500 w-full h-60;
   }
+
+  .flash-notice {
+    @apply italic text-green-700;
+  }
+
+  .flash-alert {
+    @apply italic text-red-600; 
+  }
 }
 
 .truncate-lines {
