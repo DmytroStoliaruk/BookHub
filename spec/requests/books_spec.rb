@@ -4,12 +4,8 @@ RSpec.describe "Books", type: :request do
 
   let!(:book) { create(:book) }
   let(:valid_params) { attributes_for(:book) }
-  let(:invalid_params) { 
-    attributes_for(:book).merge(title: "")
-  }
-  let(:new_params) do 
-    { title: "New Title", author: "New Author", isbn: "1111-2222-000", description: "New Description" }
-  end
+  let(:invalid_params) { attributes_for(:book).merge(title: "") }
+  let(:new_params) { attributes_for(:book).merge(title: "New Title") }
 
   describe "GET #books - show list of books" do
     it "returns http success" do
