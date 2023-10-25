@@ -17,6 +17,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+
     if @book.save
       redirect_to @book, notice: "Book was successfully created."
     else
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
 
   def update
     @book = resourse
+    
     if @book.update(book_params)
       redirect_to @book, notice: "Book was successfully updated.", status: :see_other
     else
@@ -34,8 +36,8 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = resourse
-    @book.destroy
+    resourse.destroy  
+    
     redirect_to books_url, notice: "Book was successfully destroyed.", status: :see_other
   end
 

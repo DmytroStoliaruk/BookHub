@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Book, type: :model do
-
   let(:valid_book) { create(:book) }
 
   it { should validate_presence_of(:title) }
@@ -11,5 +10,4 @@ RSpec.describe Book, type: :model do
   it "is valid with valid attributes" do
     expect(valid_book).to be_valid
   end
-
 end

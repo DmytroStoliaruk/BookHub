@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Books", type: :request do
 
-  let(:book) { create(:book) }
+  let!(:book) { create(:book) }
   let(:valid_params) { attributes_for(:book) }
   let(:invalid_params) { 
     attributes_for(:book).merge(title: "")
   }
-  let(:new_params) {
+  let(:new_params) do 
     { title: "New Title", author: "New Author", isbn: "1111-2222-000", description: "New Description" }
-  }
+  end
 
   describe "GET #books - show list of books" do
     it "returns http success" do
@@ -29,7 +29,7 @@ RSpec.describe "Books", type: :request do
 
   describe "GET #books(:id)/edit - edit book" do
     it "returns http success" do
-      get edit_book_url(book.id)
+      get edit_book_url(book)
 
       expect(response).to be_successful   
     end
@@ -37,7 +37,7 @@ RSpec.describe "Books", type: :request do
 
   describe "GET #books(:id) - show book" do
     it "returns http success" do
-      get book_path(book.id)
+      get book_path(book)
 
       expect(response).to be_successful
     end
@@ -45,28 +45,25 @@ RSpec.describe "Books", type: :request do
 
   describe "POST #create" do
     it "creates a new book" do
-      expect {
+      expect do
         post books_url, params: { book: valid_params }
-      }.to change(Book, :count).by(1)
+      end.to change(Book, :count).by(1)
     end
 
-    it "creates a new book with invalid attributes)" do
-        post books_url, params: { book: invalid_params }
+    it "create a new book with invalid attributes)" do
+      post books_url, params: { book: invalid_params }
 
-        expect(response).to be_unprocessable
+      expect(response).to be_unprocessable
     end
   end
 
   describe "PATCH #update" do
     it "update book" do
-      patch book_path(book), params: { book: new_params }
-      
-      book.reload
-
-      new_params.each_pair do |key, value|
-        expect(book[key]).to eq(value)
-      end
-
+      expect do
+        patch book_path(book), params: { book: new_params }
+        book.reload
+      end.to change { book.title }.to("New Title")
+    
       expect(response).to redirect_to(book_path(book))
     end
 
@@ -79,11 +76,9 @@ RSpec.describe "Books", type: :request do
 
   describe "DELETE #books(:id)" do
     it "deletes the book and redirects to the books index" do
-      book = Book.create valid_params
-
-      expect {
+      expect do
         delete book_path(book)
-      }.to change(Book, :count).by(-1)
+      end.to change(Book, :count).by(-1)
 
       expect(response).to redirect_to(books_path)
     end
