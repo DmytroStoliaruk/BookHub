@@ -4,29 +4,59 @@
 
 
 @layer components {
+  .btn-primary, .btn-gray, .btn-red {
+    @apply rounded-full h-12 py-3 px-5 mt-3 mb-3 block font-medium mr-4;
+  }
+
   .btn-primary {
-    @apply rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium;
+    @apply bg-blue-600 text-white;
   }
 
   .btn-gray {
-    @apply ml-2 rounded-lg py-3 px-5 bg-gray-200 inline-block font-medium;    
+    @apply bg-gray-200 text-black;    
   }
 
+  .btn-red {
+    @apply bg-red-600 text-white;    
+  }
+  
   .block-form-text {
     @apply block rounded-md border border-gray-500 w-full;
   }
-
+  
   .block-form-area {
     @apply block rounded-md border border-gray-500 w-full h-60;
   }
+}
 
-  .flash-notice {
-    @apply italic text-green-700;
-  }
+body{
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(books_library.jpeg); 
+  background-attachment: fixed; 
+  background-size: cover;
+}  
 
-  .flash-alert {
-    @apply italic text-red-600; 
-  }
+main{
+  padding-top: 70px;
+}
+
+h1{
+  color: yellow;
+}
+
+.flash-notice, .flash-alert {
+  font-style: italic;
+  display: inline-block;       
+  color: green;         
+  background-color: white;
+  border-radius: 0.5rem; 
+}
+.flash-alert {
+  color: red; 
+  font-style: italic;
+}
+
+.flash-notice {
+  color: green;         
 }
 
 .truncate-lines {
@@ -40,29 +70,84 @@
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+
 }
 
 .header, .footer {
-  background-color: #1E3A8A;
-  color: rgb(253, 253, 12);
-  padding: 20px ;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px) brightness(1.2);
+  color: yellow;
+  font-size: large;
+  padding: 5px ;
   text-align: center;
+  font-weight: 500;
+}
+
+.header {
+  height: 50px;
+}
+
+.footer {
+  height: 30px;
+  bottom: 0; 
+}
+
+.form{
+  border: px solid yellow; 
+  background-color: white;  
+  padding: 10px;
+}
+
+.book-show{
+  font-size: large;
 }
 
 .books-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .book-item {
-  border: 1px solid #ddd;
+  display: flex;
+  height: 300px;
   padding: 20px;
-  border-radius: 10px;
+  background-image: url("book_cover.png");
+  background-size: 100% 100%;
 }
 
-.main-content {
-  margin: 40px 0;
+.book-item:hover {
+  border: 3px solid black;   
+}
+ 
+.book-title{
+  position: absolute;
+  top: 50%;     
+  left: 50%;    
+  transform: translate(-50%, -50%); 
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+.book-author{
+  position: absolute;
+  bottom: 10%;  
+  left: 50%;    
+  transform: translate(-50%, -50%);
+  font-weight:normal;
+  font-size:small;
+  color: black;
+}
+
+.book-isbn{
+  position: absolute;
+  top: 10%;
+  font-weight:200;
+  font-size: small;
+  color:black;
 }

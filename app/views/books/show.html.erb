@@ -1,11 +1,5 @@
 <div class="mx-auto md:w-4/5 w-full">
   <h1 class="font-bold text-4xl">Show book</h1>
+ 
   <%= render "books/book", book: @book  %>
-
-  <div class="flex">
-    <%= link_to "Edit this book", edit_book_path(@book), class: "btn-gray mr-4" %>
-    <%= button_to "Destroy this book", book_path(@book), method: :delete, class: "btn-gray mr-4" %>
-    <%= link_to "Back to books", books_path, class: "btn-gray" %>
-  </div>
-
 </div>

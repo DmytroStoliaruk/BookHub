@@ -3,12 +3,8 @@
     <h1 class="font-bold text-4xl">List of books</h1>
     <%= link_to "New book", new_book_path, class: "btn-primary" %>
   </div>
-
-  <div id="books" class="min-w-full">
-    <div class="main-content container">
-      <div class="books-list">
-        <%= render partial: "books/book", collection: @books %>
-        </div>
-      </div>
+  <div class="books-list">
+    <%= render partial: "books/cover", collection: @books, as: :book %>
   </div>
 </div>
+
