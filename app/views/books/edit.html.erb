@@ -1,5 +1,4 @@
 <div class="mx-auto md:w-4/5 w-full">
   <h1 class="font-bold text-4xl">Editing book</h1>
-
-  <%= render "books/form", book: @book %>
+  <%= render "books/form", book: @book, form_url: book_path(@book) %>
 </div>

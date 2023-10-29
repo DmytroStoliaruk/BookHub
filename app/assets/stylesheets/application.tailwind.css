@@ -4,150 +4,91 @@
 
 
 @layer components {
+
+  /* tag styles */
+  body {
+    @apply bg-fixed bg-cover bg-gradient-to-b from-black via-black to-black;
+    background-image: url('books_library.jpeg');
+  }
+  main{
+    @apply pt-20;
+    
+  }
+  h1{
+    @apply text-yellow-100;
+  }
+
+  /* button styles */
   .btn-primary, .btn-gray, .btn-red {
     @apply rounded-full h-12 py-3 px-5 mt-3 mb-3 block font-medium mr-4;
   }
-
   .btn-primary {
     @apply bg-blue-600 text-white;
   }
-
   .btn-gray {
     @apply bg-gray-200 text-black;    
   }
-
   .btn-red {
     @apply bg-red-600 text-white;    
   }
   
-  .block-form-text {
-    @apply block rounded-md border border-gray-500 w-full;
+  /* flash styles */
+  .flash-base {
+    @apply italic inline-block bg-white rounded-md;
   }
   
-  .block-form-area {
-    @apply block rounded-md border border-gray-500 w-full h-60;
+  /* header, footer styles */
+  .header, .footer {
+    @apply fixed w-full  bg-black bg-opacity-60 text-yellow-100 text-center font-semibold p-5 z-10;
+  }
+  .header {
+    @apply h-16;
+  }
+  .footer {
+    @apply h-8 bottom-0;
+  }
+  
+  /* list of book covers styles */ 
+  .book-show {
+    @apply text-lg;
+  }  
+  .books-list {
+    @apply grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4;
+  }
+  .book-item {
+    @apply flex h-96 p-5 bg-center bg-no-repeat bg-cover;
+    background-image: url("book_cover.png");
+  }
+  .book-item:hover {
+    @apply border-2 border-black;
+  }
+  
+  /* texts cover styles */ 
+  .book-title {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold italic text-center text-black;
+  }
+  .book-author {
+    @apply absolute bottom-10 left-1/2 transform -translate-x-1/2 font-normal text-sm text-black;
+  }
+  .book-isbn {
+    @apply absolute top-10 font-light text-sm text-black;
+  }
+  
+  /* form styles */
+  .form {
+    @apply border border-solid border-yellow-100 bg-white p-3;
+  }
+
+  /* other styles */
+  .container {
+    @apply mx-auto max-w-6xl;
   }
 }
 
-body{
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(books_library.jpeg); 
-  background-attachment: fixed; 
-  background-size: cover;
-}  
-
-main{
-  padding-top: 70px;
-}
-
-h1{
-  color: yellow;
-}
-
-.flash-notice, .flash-alert {
-  font-style: italic;
-  display: inline-block;       
-  color: green;         
-  background-color: white;
-  border-radius: 0.5rem; 
+ /* set flash text color. Doesn.t work as @layer*/
+.flash-notice {
+  color: green;
 }
 .flash-alert {
-  color: red; 
-  font-style: italic;
-}
-
-.flash-notice {
-  color: green;         
-}
-
-.truncate-lines {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-
-}
-
-.header, .footer {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px) brightness(1.2);
-  color: yellow;
-  font-size: large;
-  padding: 5px ;
-  text-align: center;
-  font-weight: 500;
-}
-
-.header {
-  height: 50px;
-}
-
-.footer {
-  height: 30px;
-  bottom: 0; 
-}
-
-.form{
-  border: px solid yellow; 
-  background-color: white;  
-  padding: 10px;
-}
-
-.book-show{
-  font-size: large;
-}
-
-.books-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.book-item {
-  display: flex;
-  height: 300px;
-  padding: 20px;
-  background-image: url("book_cover.png");
-  background-size: 100% 100%;
-}
-
-.book-item:hover {
-  border: 3px solid black;   
-}
- 
-.book-title{
-  position: absolute;
-  top: 50%;     
-  left: 50%;    
-  transform: translate(-50%, -50%); 
-  font-weight: bold;
-  font-style: italic;
-  text-align: center;
-  color: black;
-}
-
-.book-author{
-  position: absolute;
-  bottom: 10%;  
-  left: 50%;    
-  transform: translate(-50%, -50%);
-  font-weight:normal;
-  font-size:small;
-  color: black;
-}
-
-.book-isbn{
-  position: absolute;
-  top: 10%;
-  font-weight:200;
-  font-size: small;
-  color:black;
+  color: red;
 }
