@@ -1,0 +1,27 @@
+/* list of book covers styles */
+@layer components {
+  .book-show {
+    @apply text-lg;
+  }
+  .books-list {
+    @apply grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4;
+  }
+  .book-item {
+    @apply flex h-96 p-5 bg-center bg-no-repeat bg-cover;
+    background-image: url("book_cover.png");
+  }
+  .book-item:hover {
+    @apply border-2 border-black;
+  }
+
+  /* texts cover styles */
+  .book-title {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold italic text-center text-black;
+  }
+  .book-author {
+    @apply absolute bottom-10 left-1/2 transform -translate-x-1/2 font-normal text-sm text-black;
+  }
+  .book-isbn {
+    @apply absolute top-10 font-light text-sm text-black;
+  }
+}

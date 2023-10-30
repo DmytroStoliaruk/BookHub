@@ -1,0 +1,22 @@
+/* tags styles */
+@layer components {
+  body {
+    @apply bg-fixed bg-cover bg-gradient-to-b from-black via-black to-black;
+    background-image: url('books_library.jpeg');
+  }
+  main{
+    @apply pt-20;
+  }
+  h1{
+    @apply text-yellow-100;
+  }
+  header, footer {
+    @apply fixed w-full  bg-black bg-opacity-60 text-yellow-100 text-center font-semibold p-5 z-10;
+  }
+  header {
+    @apply h-16;
+  }
+  footer {
+    @apply h-8 bottom-0;
+  }
+}

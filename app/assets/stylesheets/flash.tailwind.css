@@ -1,0 +1,14 @@
+/* flash styles */
+@layer components {
+  .flash-base {
+    @apply italic inline-block bg-white rounded-md;
+  }
+}
+
+/* set flash text color. Doesn't work as @layer */
+.flash-notice {
+  color: green;
+}
+.flash-alert {
+  color: red;
+}
