@@ -1,28 +1,28 @@
 require "rails_helper"
 
 RSpec.describe "Books", type: :request do
-  
+
   let!(:book) { create(:book) }
   let(:valid_params) { attributes_for(:book) }
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
   let(:new_params) { attributes_for(:book).merge(title: "New Title") }
-  
+
   describe "GET #books - show list of books" do
     it "renders the title of the book" do
       get books_path
-      
-      expect(response.body).to include(book.title)
-    end   
-  end 
-  
-  describe "GET #books(:id) - show one book" do
-    it "returns http success" do
-      get book_path(book)
-      
+
       expect(response.body).to include(book.title)
     end
   end
-  
+
+  describe "GET #books(:id) - show one book" do
+    it "returns http success" do
+      get book_path(book)
+
+      expect(response.body).to include(book.title)
+    end
+  end
+
   describe "GET #books/new - create new book form" do
     it "returns http success" do
       get new_book_url
@@ -37,7 +37,7 @@ RSpec.describe "Books", type: :request do
       get edit_book_url(book)
 
       expect(response).to be_successful
-      expect(response.body).to include(book.title)   
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -73,7 +73,7 @@ RSpec.describe "Books", type: :request do
     end
 
     it "update book with invalid parameters" do
-      patch book_path(book), params: { book: invalid_params }   
+      patch book_path(book), params: { book: invalid_params }
 
       expect(response).to be_unprocessable
       expect(response.body).to include("can&#39;t be blank")
