@@ -2,9 +2,11 @@
 .flash-base {
   @apply italic font-semibold inline-block bg-white rounded-md;
 }
+
 .flash-notice {
   @apply text-green-600;
 }
+
 .flash-alert {
   @apply text-red-600
 }

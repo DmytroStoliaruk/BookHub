@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Book, type: :model do
-
   let(:invalid_book) { build(:book, :empty_title) }
 
   it "is not valid with an empty title" do
