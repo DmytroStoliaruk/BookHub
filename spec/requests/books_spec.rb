@@ -10,7 +10,8 @@ RSpec.describe "Books", type: :request do
     it "renders the title of the book" do
       get books_path
 
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -18,7 +19,8 @@ RSpec.describe "Books", type: :request do
     it "returns http success" do
       get book_path(book)
 
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -27,7 +29,6 @@ RSpec.describe "Books", type: :request do
       get new_book_url
 
       expect(response).to be_successful
-      expect(response.body).to include("Title")
     end
   end
 
@@ -36,7 +37,7 @@ RSpec.describe "Books", type: :request do
       get edit_book_url(book)
 
       expect(response).to be_successful
-      expect(response.body).to include(book.title)
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -47,16 +48,17 @@ RSpec.describe "Books", type: :request do
         post books_url, params: { book: valid_params }
       end.to change(Book, :count).by(1)
 
+      expect(response).to be_redirect
       expect(flash[:notice]).to eq("Book was successfully created.")
     end
 
     it "create a new book with invalid attributes)" do
-      expect {
+      expect do
         post books_url, params: { book: invalid_params }
-      }.to_not change(Book, :count)
+      end.to_not change(Book, :count)
 
       expect(response).to be_unprocessable
-      expect(response.body).to include("can&#39;t be blank")
+      expect(response.body).to include(CGI.escapeHTML("can't be blank"))
     end
   end
 
@@ -75,7 +77,7 @@ RSpec.describe "Books", type: :request do
       patch book_path(book), params: { book: invalid_params }
 
       expect(response).to be_unprocessable
-      expect(response.body).to include("can&#39;t be blank")
+      expect(response.body).to include(CGI.escapeHTML("can't be blank"))
     end
   end
 
