@@ -6,21 +6,21 @@ RSpec.describe "Books", type: :request do
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
   let(:new_params) { attributes_for(:book).merge(title: "New Title") }
 
-  describe "GET #books - show list of books" do
+  describe "GET #books - index of books" do
     it "renders the title of the book" do
       get books_path
 
       expect(response).to be_successful
-      expect(response).to be_successful
-      expect(response.body).to include(CGI.escapeHTML(CGI.escapeHTML(book.title)))
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
-  describe "GET #books/(:id) - show one book" do
+  describe "GET #books(:id) - show one book" do
     it "returns http success" do
       get book_path(book)
 
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -32,12 +32,12 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "GET #books/(:id)/edit - edit book" do
+  describe "GET #books(:id)/edit - edit book" do
     it "returns http success" do
       get edit_book_path(book)
 
       expect(response).to be_successful
-      expect(response.body).to include(book.title)
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe "Books", type: :request do
       end.to_not change(Book, :count)
 
       expect(response).to be_unprocessable
-      expect(response.body).to include("can&#39;t be blank")
+      expect(response.body).to include(CGI.escapeHTML("can't be blank"))
     end
   end
 
