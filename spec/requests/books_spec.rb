@@ -16,7 +16,7 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "GET #books(:id) - show one book" do
+  describe "GET #books/(:id) - show one book" do
     it "returns http success" do
       get book_path(book)
 
@@ -32,7 +32,7 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "GET #books(:id)/edit - edit book" do
+  describe "GET #books/(:id)/edit - edit book" do
     it "returns http success" do
       get edit_book_path(book)
 
