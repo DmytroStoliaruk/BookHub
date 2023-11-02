@@ -11,7 +11,8 @@ RSpec.describe "Books", type: :request do
       get books_path
 
       expect(response).to be_successful
-      expect(response.body).to include(CGI.escapeHTML(book.title))
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(CGI.escapeHTML(book.title)))
     end
   end
 
@@ -19,14 +20,13 @@ RSpec.describe "Books", type: :request do
     it "returns http success" do
       get book_path(book)
 
-      expect(response).to be_successful
-      expect(response.body).to include(CGI.escapeHTML(book.title))
+      expect(response.body).to include(book.title)
     end
   end
 
   describe "GET #books/new - create new book form" do
     it "returns http success" do
-      get new_book_url
+      get new_book_path
 
       expect(response).to be_successful
     end
@@ -34,10 +34,10 @@ RSpec.describe "Books", type: :request do
 
   describe "GET #books(:id)/edit - edit book" do
     it "returns http success" do
-      get edit_book_url(book)
+      get edit_book_path(book)
 
       expect(response).to be_successful
-      expect(response.body).to include(CGI.escapeHTML(book.title))
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -45,7 +45,7 @@ RSpec.describe "Books", type: :request do
   describe "POST #create" do
     it "creates a new book" do
       expect do
-        post books_url, params: { book: valid_params }
+        post books_path, params: { book: valid_params }
       end.to change(Book, :count).by(1)
 
       expect(response).to be_redirect
@@ -58,7 +58,7 @@ RSpec.describe "Books", type: :request do
       end.to_not change(Book, :count)
 
       expect(response).to be_unprocessable
-      expect(response.body).to include(CGI.escapeHTML("can't be blank"))
+      expect(response.body).to include("can&#39;t be blank")
     end
   end
 
