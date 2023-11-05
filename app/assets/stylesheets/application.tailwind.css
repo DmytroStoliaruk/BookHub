@@ -2,8 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "./tags.css";
-@import "./base.css";
-@import "./buttons.css";
-@import "./book_cover.css";
-@import "./flash.css";
+@import "./styles/tags.css";
+@import "./styles/base.css";
+@import "./styles/buttons.css";
+@import "./styles/book_cover.css";
+@import "./styles/flash.css";
