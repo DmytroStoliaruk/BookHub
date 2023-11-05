@@ -1,0 +1,15 @@
+<%= link_to book_path(book) do %>
+  <div class="book-item relative">
+    <div id="<%= dom_id book %>">
+      <p class="book-title">
+        <%= book.title %>
+      </p>
+      <p class="book-author">
+        <%= book.author %>
+      </p>
+      <p class="book-isbn">
+        IBSN: <%= book.isbn %>
+      </p>
+    </div>
+  </div>
+<% end %>
