@@ -14,7 +14,7 @@
   }
 
   header, footer {
-    @apply fixed w-full  bg-black bg-opacity-60 text-yellow-100 text-center font-semibold p-5 z-10;
+    @apply fixed w-full  bg-black bg-opacity-60 text-yellow-100 text-center items-center font-semibold z-10;
   }
 
   header {
@@ -22,6 +22,6 @@
   }
 
   footer {
-    @apply h-8 bottom-0;
+    @apply h-5 bottom-0;
   }
 }
