@@ -1,0 +1,10 @@
+/* other styles */
+@layer components {
+  .form {
+    @apply border border-solid border-yellow-100 bg-white p-3;
+  }
+
+  .container {
+    @apply mx-auto max-w-6xl;
+  }
+}

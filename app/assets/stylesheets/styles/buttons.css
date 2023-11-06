@@ -1,0 +1,18 @@
+/* button styles */
+@layer components {
+  .btn-primary, .btn-gray, .btn-red {
+    @apply rounded-full h-12 py-3 px-5 mt-3 mb-3 block font-medium mr-4;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white;
+  }
+
+  .btn-gray {
+    @apply bg-gray-200 text-black;
+  }
+
+  .btn-red {
+    @apply bg-red-600 text-white;
+  }
+}
