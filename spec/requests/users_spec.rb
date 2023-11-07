@@ -1,7 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Users", type: :request do
-
+RSpec.describe "UsersController", type: :request do
   let!(:user) { create(:user) }
   let(:valid_params) { attributes_for(:user) }
   let(:invalid_params) { attributes_for(:user, :empty_first_name) }

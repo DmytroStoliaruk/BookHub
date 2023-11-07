@@ -2,7 +2,7 @@
   <div class="flex justify-between flex text-center items-center">
     <div></div> <!-- empty block for centering text -->
       <% if user_signed_in? %>
-        <%= "#{current_user.first_name} #{current_user.last_name}, welcome to BookHub!" %>
+        <%= "#{current_user.first_name}, welcome to BookHub!" %>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-gray" %>
       <% else %>
         Welcome to BookHub!
