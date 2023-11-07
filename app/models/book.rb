@@ -23,7 +23,7 @@ class Book < ApplicationRecord
     search_query = {
         query: {
         multi_match: {
-          query: search_params["query"],
+          query: search_params,
           fields: ['title', 'author', 'description'],
           fuzziness: 'AUTO'
         }

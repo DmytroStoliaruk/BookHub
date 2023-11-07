@@ -1,9 +1,5 @@
 class BooksController < ApplicationController
   def index
-    if params[:books].present?
-      @books = params[:books]
-    else
-    end
     @books = collection
   end
 
@@ -48,11 +44,18 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :description, :cover, :content, :books)
+    params.require(:book).permit(:title, :author, :isbn, :description, :cover, :content, :query)
   end
 
   def collection
-    Book.ordered
+    if params[:query].present?
+      search_result = Book.search(params[:query])
+      books = search_result.map { |result| Book.find(result["_id"]) }
+    else
+      books = Book.ordered
+    end
+    flash[:notice] = "Found #{books.count} books"
+    books
   end
 
   def resourse
