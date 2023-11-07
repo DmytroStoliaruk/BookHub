@@ -26,6 +26,9 @@ gem "bootsnap", require: false
 # Additional gems
 gem "devise"
 gem "simple_form"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
+
 
 group :development, :test do
   gem "debug", platforms: [:mri, :mingw, :x64_mingw]
