@@ -33,14 +33,3 @@ class Book < ApplicationRecord
     __elasticsearch__.search(search_query)
   end
 end
-
-
-
-# if params[:query].present?
-#   search_result = Book.search(params[:query])
-#   books = search_result.map { |result| Book.find(result["_id"]) }
-# else
-#   books = Book.ordered
-# end
-# flash[:notice] = "Found #{books.count} books"
-# books
