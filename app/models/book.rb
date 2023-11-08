@@ -9,8 +9,6 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :isbn, presence: true
 
-  scope :ordered, -> { order("title") }
-
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :title, type: 'text'
@@ -18,6 +16,8 @@ class Book < ApplicationRecord
       indexes :description, type: 'text'
     end
   end
+
+  scope :ordered, -> { order("title") }
 
   def self.search(search_params)
     search_query = {
@@ -29,6 +29,18 @@ class Book < ApplicationRecord
         }
       }
     }
+
     __elasticsearch__.search(search_query)
   end
 end
+
+
+
+# if params[:query].present?
+#   search_result = Book.search(params[:query])
+#   books = search_result.map { |result| Book.find(result["_id"]) }
+# else
+#   books = Book.ordered
+# end
+# flash[:notice] = "Found #{books.count} books"
+# books
