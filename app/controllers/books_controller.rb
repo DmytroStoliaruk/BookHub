@@ -54,5 +54,4 @@ class BooksController < ApplicationController
   def resourse
     collection.find(params[:id])
   end
-
 end
