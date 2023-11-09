@@ -42,14 +42,8 @@ class BooksController < ApplicationController
   end
 
   def search
-    search_result = Book.search(params[:search][:query])
-    message = "Was found #{search_result.count} book(s) which contain '#{params[:search][:query]}'."
-    flash[:notice] = message
-    if search_result.count > 0
-      @books = search_result.map { |result| Book.find(result["_id"]) }
-    else
-      @books = collection
-    end
+    @books = Book.search(params[:search][:query]).records
+    @books = collection if @books.empty?
 
     render :index
   end
@@ -61,7 +55,7 @@ class BooksController < ApplicationController
   end
 
   def collection
-    @books = Book.ordered
+    Book.ordered
   end
 
   def resourse
