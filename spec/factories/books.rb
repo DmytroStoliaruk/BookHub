@@ -9,6 +9,14 @@ FactoryBot.define do
       title { "" }
     end
 
+    trait :book1_title do
+      title { "Book number one" }
+    end
+
+    trait :book2_title do
+      title { "Book number two" }
+    end
+
     trait :with_cover do
       after(:create) do |book|
         cover_path = Rails.root.join("app", "assets", "images", "book_cover.png")

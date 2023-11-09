@@ -41,7 +41,6 @@ RSpec.describe BooksController, type: :request do
     end
   end
 
-
   describe "POST #create" do
     it "creates a new book" do
       expect do
@@ -92,30 +91,28 @@ RSpec.describe BooksController, type: :request do
     end
   end
 
-
-  # search tests
   describe 'GET #search' do
-    let!(:book1) { create(:book, title: 'Elasticsearch Basics') }
-    let!(:book2) { create(:book, title: 'Advanced Elasticsearch') }
+    let!(:book1) { create(:book, :book1_title) }
+    let!(:book2) { create(:book, :book2_title) }
     let(:collection) { [book1, book2] }
 
     before do
-      allow(Book).to receive(:search).and_return(double('Search', records: collection))
+      allow(Book).to receive(:search).and_return(double("Search test", records: collection))
     end
 
-    context 'when search query is provided' do
-      it 'assigns @books with the search results' do
-        get search_books_path, params: { search: { query: 'Elasticsearch' } }
+    context "when search query is provided" do
+      it "assigns @books with the search results" do
+        get search_books_path, params: { search: { query: "number" } }
 
         expect(assigns(:books)).to match_array(collection)
         expect(response).to render_template(:index)
       end
     end
 
-    context 'when search query is empty' do
-      it 'assigns @books with the default collection' do
-        allow(Book).to receive(:search).and_return(double('Search', records: []))
-        get search_books_path, params: { search: { query: '' } }
+    context "when search query is empty" do
+      it "assigns @books with the default collection" do
+        allow(Book).to receive(:search).and_return(double("Search test", records: []))
+        get search_books_path, params: { search: { query: "" } }
 
         expect(assigns(:books)).to match_array(Book.all)
         expect(response).to render_template(:index)
