@@ -17,7 +17,7 @@
   }
 
   .book-item:hover {
-    @apply scale-95;
+    @apply scale-105;
   }
 
   /* texts cover styles */

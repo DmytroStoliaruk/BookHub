@@ -41,6 +41,19 @@ class BooksController < ApplicationController
     redirect_to books_path, alert: "Book was successfully destroyed.", status: :see_other
   end
 
+  def search
+    search_result = Book.search(params[:search][:query])
+    message = "Was found #{search_result.count} book(s) which contain '#{params[:search][:query]}'."
+    flash[:notice] = message
+    if search_result.count > 0
+      @books = search_result.map { |result| Book.find(result["_id"]) }
+    else
+      @books = collection
+    end
+
+    render :index
+  end
+
   private
 
   def book_params
@@ -48,13 +61,7 @@ class BooksController < ApplicationController
   end
 
   def collection
-    if params[:search].present?
-      search_result = Book.search(params[:search][:query])
-      flash[:notice] = "Was found #{search_result.count} book(s)."
-      search_result.map { |result| Book.find(result["_id"]) }
-    else
-      Book.ordered
-    end
+    @books = Book.ordered
   end
 
   def resourse

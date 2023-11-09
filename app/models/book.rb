@@ -9,6 +9,8 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :isbn, presence: true
 
+  scope :ordered, -> { order("title") }
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :title, type: 'text'
@@ -16,8 +18,6 @@ class Book < ApplicationRecord
       indexes :description, type: 'text'
     end
   end
-
-  scope :ordered, -> { order("title") }
 
   def self.search(search_params)
     search_query = {
