@@ -43,7 +43,12 @@ class BooksController < ApplicationController
 
   def search
     @books = Book.search(params[:search][:query]).records
-    @books = collection if @books.empty?
+    if @books.any?
+      flash.now[:notice] = "Books found: #{@books.total}"
+    else
+      flash.now[:alert] = "No books found."
+      @books = collection
+    end
 
     render :index
   end
