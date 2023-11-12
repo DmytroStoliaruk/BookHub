@@ -1,30 +1,34 @@
 <div class="form">
-  <div id="<%= dom_id book %>">
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Title:</strong>
-      <div class="book-show">
-        <%= book.title %>
-      </div>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Author:</strong>
-      <div class="book-show">
-        <%= book.author %>
-      </div>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Isbn:</strong>
-      <div class="book-show">
-        <%= book.isbn %>
-      </div>
-    </p>
-    <p class="my-5" >
-      <strong class="block font-medium mb-1">Description:</strong>
-      <div class="book-show">
-        <%= book.description %>
-      </div>
-    </p>
+  <div id="<%= dom_id book %>" class="flex">
+    <%= image_tag book.cover, class: "h-96 p-2" if book.cover.attached? %>
+    <div class="book-details">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Title:</strong>
+        <div class="book-show">
+          <%= book.title %>
+        </div>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Author:</strong>
+        <div class="book-show">
+          <%= book.author %>
+        </div>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Isbn:</strong>
+        <div class="book-show">
+          <%= book.isbn %>
+        </div>
+      </p>
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Description:</strong>
+        <div class="book-show">
+          <%= book.description %>
+        </div>
+      </p>
+    </div>
   </div>
+
   <div class="flex">
     <% if user_signed_in? %>
       <%= link_to "Edit this book", edit_book_path(@book), class: "btn-gray" %>

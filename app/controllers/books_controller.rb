@@ -27,7 +27,7 @@ class BooksController < ApplicationController
 
   def update
     @book = resourse
-    
+
     if @book.update(book_params)
       redirect_to @book, notice: "Book was successfully updated.", status: :see_other
     else
@@ -36,15 +36,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    resourse.destroy  
-    
+    resourse.destroy
+
     redirect_to books_path, alert: "Book was successfully destroyed.", status: :see_other
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :description)
+    params.require(:book).permit(:title, :author, :isbn, :description, :cover, :content)
   end
 
   def collection
@@ -54,5 +54,4 @@ class BooksController < ApplicationController
   def resourse
     collection.find(params[:id])
   end
-  
 end

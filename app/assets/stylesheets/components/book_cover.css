@@ -9,12 +9,15 @@
   }
 
   .book-item {
-    @apply flex h-96 p-5 bg-center bg-no-repeat bg-cover;
-    background-image: url("book_cover.png");
+    @apply flex h-96 bg-center bg-no-repeat bg-cover;
+  }
+
+  .book-item img {
+    @apply w-full h-full object-cover;
   }
 
   .book-item:hover {
-    @apply border-2 border-black;
+    @apply scale-95;
   }
 
   /* texts cover styles */
@@ -27,6 +30,6 @@
   }
 
   .book-isbn {
-    @apply absolute top-10 font-light text-sm text-black;
+    @apply absolute top-10 left-5 font-light text-sm text-black;
   }
 }

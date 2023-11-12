@@ -11,7 +11,9 @@
     </div>
     <div class="my-5">
       <%= f.input :description %>
-      </div>
+    </div>
+    <%= f.input :cover, as: :file %>
+    <%= f.input :content, as: :file %>
     <div class="flex">
       <%= f.button :submit, class: "btn-gray" %>
       <%= link_to "Back to books", books_path, class: "btn-gray" %>
