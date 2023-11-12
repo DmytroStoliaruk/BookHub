@@ -5,7 +5,7 @@ RSpec.describe BooksIndex, type: :request do
     let!(:book1) { create(:book, :search_params1) }
     let!(:book2) { create(:book, :search_params2) }
 
-    context "when a search query is provided" do
+    describe "when a search query is provided" do
       before do
         allow(BooksIndex).to receive(:search).and_return([book1, book2])
       end
@@ -18,7 +18,7 @@ RSpec.describe BooksIndex, type: :request do
       end
     end
 
-    context "when the search query is empty" do
+    describe "when the search query is empty" do
       before do
         allow(BooksIndex).to receive(:search).and_return(Book.all.to_a)
       end

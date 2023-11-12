@@ -4,7 +4,6 @@ RSpec.describe BooksIndex, type: :chewy do
   let!(:book1) { create(:book, :search_params1) }
   let!(:book2) { create(:book, :search_params2) }
   before(:each) do
-    Chewy.strategy(:urgent) 
     BooksIndex.delete
     BooksIndex.create
     BooksIndex.import(force: true) 
