@@ -92,8 +92,8 @@ RSpec.describe BooksController, type: :request do
   end
 
   describe 'GET #search' do
-    let!(:book1) { create(:book, :book1_title) }
-    let!(:book2) { create(:book, :book2_title) }
+    let!(:book1) { create(:book, :search_params1) }
+    let!(:book2) { create(:book, :search_params2) }
     let(:collection) { [book1, book2] }
 
     before do

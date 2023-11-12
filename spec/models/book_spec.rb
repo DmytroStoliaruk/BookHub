@@ -17,8 +17,8 @@ RSpec.describe Book, type: :model do
   end
 
   describe '.search' do
-    let!(:book1) { create(:book, :book1_title) }
-    let!(:book2) { create(:book, :book2_title) }
+    let!(:book1) { create(:book, :search_params1) }
+    let!(:book2) { create(:book, :search_params2) }
 
     before(:each) do
       Book.__elasticsearch__.create_index!(force: true)
@@ -26,9 +26,25 @@ RSpec.describe Book, type: :model do
       Book.__elasticsearch__.refresh_index!
     end
 
-    context "when the books exists" do
+    context "when the books with title exists" do
       it "returns the books" do
         results = Book.search("number").records
+        expect(results.size).to eq(2)
+        expect(results).to include(book1, book2)
+      end
+    end
+
+    context "when the books with author exists" do
+      it "returns the books" do
+        results = Book.search("Adams").records
+        expect(results.size).to eq(1)
+        expect(results).to include(book2)
+      end
+    end
+
+    context "when the books with description exists" do
+      it "returns the books" do
+        results = Book.search("About").records
         expect(results.size).to eq(2)
         expect(results).to include(book1, book2)
       end
