@@ -28,7 +28,7 @@ gem "devise"
 gem "simple_form"
 gem "elasticsearch-model"
 gem "elasticsearch-rails"
-
+gem "chewy", "~> 7.3", ">= 7.3.4"
 
 group :development, :test do
   gem "debug", platforms: [:mri, :mingw, :x64_mingw]

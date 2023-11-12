@@ -42,7 +42,8 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.search(params[:search][:query]).records
+    @books = BooksIndex.search(params[:search][:query])
+
     if @books.any?
       flash.now[:notice] = "Books found: #{@books.count}"
     else
