@@ -12,4 +12,15 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  # config.around(:each, type: :model) do |example|
+  #   Chewy.strategy(:urgent) do
+  #     example.run
+  #   end
+  # end
+
+  config.before(:suite) do
+    Chewy.strategy(:bypass)
+  end
+
 end

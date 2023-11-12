@@ -1,13 +1,6 @@
 require "rails_helper"
 
 RSpec.describe BooksController, type: :request do
-
-  around do |example|
-    Chewy.strategy(:urgent) do
-      example.run
-    end
-  end
-
   let!(:book) { create(:book) }
   let(:valid_params) { attributes_for(:book) }
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
