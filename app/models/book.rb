@@ -1,4 +1,4 @@
-class Book < ApplicationRecord 
+class Book < ApplicationRecord
   has_one_attached :cover
   has_one_attached :content
 
