@@ -26,8 +26,6 @@ gem "bootsnap", require: false
 # Additional gems
 gem "devise"
 gem "simple_form"
-gem "elasticsearch-model"
-gem "elasticsearch-rails"
 gem "chewy", "~> 7.3", ">= 7.3.4"
 
 group :development, :test do
@@ -38,7 +36,6 @@ end
 
 group :test do
   gem "rspec-rails", "~> 5.0"
-  gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "shoulda", "~> 4.0"
   gem "shoulda-matchers", "~> 4.0"
 end

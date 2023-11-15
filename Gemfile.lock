@@ -94,11 +94,6 @@ GEM
     elasticsearch-api (7.13.3)
       multi_json
     elasticsearch-dsl (0.1.10)
-    elasticsearch-model (7.2.1)
-      activesupport (> 3)
-      elasticsearch (~> 7)
-      hashie
-    elasticsearch-rails (7.2.1)
     elasticsearch-transport (7.13.3)
       faraday (~> 1)
       multi_json
@@ -135,7 +130,6 @@ GEM
     faraday-retry (1.0.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -197,10 +191,6 @@ GEM
       activesupport (= 7.0.8)
       bundler (>= 1.15.0)
       railties (= 7.0.8)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -290,15 +280,12 @@ DEPENDENCIES
   chewy (~> 7.3, >= 7.3.4)
   debug
   devise
-  elasticsearch-model
-  elasticsearch-rails
   factory_bot_rails
   faker
   importmap-rails
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
-  rails-controller-testing (~> 1.0, >= 1.0.5)
   rspec-rails (~> 5.0)
   shoulda (~> 4.0)
   shoulda-matchers (~> 4.0)
