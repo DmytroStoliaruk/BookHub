@@ -5,6 +5,7 @@ RSpec.describe BooksController, type: :request do
   let(:valid_params) { attributes_for(:book) }
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
   let(:new_params) { attributes_for(:book).merge(title: "New Title") }
+  let(:book_with_content) { create(:book, :with_cover, :with_content) }
 
   describe "GET #books - index of books" do
     it "renders the title of the book" do
@@ -88,6 +89,15 @@ RSpec.describe BooksController, type: :request do
 
       expect(response).to redirect_to(books_path)
       expect(flash[:alert]).to eq("Book was successfully destroyed.")
+    end
+  end
+
+  describe "GET #books(:id)/reader - read the book in PDF viewer" do
+    it "returns http success" do
+      get reader_book_path(book_with_content)
+
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book_with_content.title))
     end
   end
 end
