@@ -30,10 +30,10 @@
   </div>
 
   <div class="flex">
-    <%= link_to "Read book", reader_book_path(@book), class: "btn-primary" if book.content.attached? %>
+    <%= link_to "Read book", reader_book_path(book), class: "btn-primary" if book.content.attached? %>
     <% if user_signed_in? %>
-      <%= link_to "Edit this book", edit_book_path(@book), class: "btn-gray" %>
-      <%= button_to "Destroy this book", book_path(@book), method: :delete, class: "btn-red" %>
+      <%= link_to "Edit this book", edit_book_path(book), class: "btn-gray" %>
+      <%= button_to "Destroy this book", book_path(book), method: :delete, class: "btn-red" %>
     <% end %>
     <%= link_to "Back to books", books_path, class: "btn-gray" %>
   </div>

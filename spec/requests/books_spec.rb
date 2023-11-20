@@ -95,9 +95,10 @@ RSpec.describe BooksController, type: :request do
   describe "GET #books(:id)/reader - read the book in PDF viewer" do
     it "returns http success" do
       get reader_book_path(book_with_content)
+      attached_file_name = book_with_content.content.filename.to_s
 
       expect(response).to be_successful
-      expect(response.body).to include(CGI.escapeHTML(book_with_content.title))
+      expect(response.body).to include(attached_file_name)
     end
   end
 end
