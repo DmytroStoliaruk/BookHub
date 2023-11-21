@@ -1,8 +1,31 @@
-  <div class="flex">
-    <h1 class="font-bold text-4xl"><%= @book.title %> </h1> 
-    <div class="absolute right-0">
-      <%= link_to "Back to books", books_path, class: "btn-gray" %>
-    </div>
-  </div>
-  
-  <iframe src="<%= url_for(@book.content) %>" width="100%" height="100%"></iframe>
+<div class="flex">
+  <h1 class="fixed left-0 font-bold text-4xl w-64"><%= @book.title %> </h1> 
+  <div id="adobe-dc-view"></div>
+  <%= link_to "Back to books", books_path, class: "fixed right-0 btn-gray" %>
+</div>
+
+<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+<script>
+  function initializeAdobeViewer() {
+    let adobeDCView = new AdobeDC.View({clientId: "e748c44682a84ca29c02e975f648cd41", divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+      content: { location: { url: "<%= rails_blob_path(@book.content, only_path: true) %>" } },
+      metaData: { fileName: "<%= @book.content.filename %>" }
+    },{
+      embedMode: "IN_LINE",
+      showAnnotationTools: false,
+      showDownloadPDF: false,
+      showPrintPDF: false
+    });
+  }
+
+  // for using AdobeDC first time
+  document.addEventListener("adobe_dc_view_sdk.ready", function() {
+    initializeAdobeViewer();
+  });
+
+  // for using AdobeDC after first time
+  if (window.AdobeDC) {
+    initializeAdobeViewer();
+  }
+</script>
