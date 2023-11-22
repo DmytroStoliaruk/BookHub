@@ -8,7 +8,6 @@ RSpec.describe BookSearch, type: :request do
 
     before(:each) do
       BooksIndex.reset
-      BooksIndex.import(force: true) 
     end
 
     describe "when a search query is provided" do
