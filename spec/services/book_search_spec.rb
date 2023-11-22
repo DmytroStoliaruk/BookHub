@@ -6,7 +6,6 @@ RSpec.describe BookSearch do
   
   before(:each) do
     BooksIndex.reset
-    BooksIndex.import(force: true) 
   end
   
   describe '.search' do
