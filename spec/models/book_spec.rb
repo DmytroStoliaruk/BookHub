@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Book, type: :model do
-
   let(:invalid_book) { build(:book, :empty_title) }
   let!(:book) { create(:book, :with_cover, :with_content) }
 
