@@ -6,7 +6,8 @@ RSpec.describe BooksController, type: :request do
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
   let(:new_params) { attributes_for(:book).merge(title: "New Title") }
   let(:book_with_content) { create(:book, :with_cover, :with_content) }
-
+  let(:attached_file_name) { book_with_content.content.filename.to_s }
+  
   describe "GET #books - index of books" do
     it "renders the title of the book" do
       get books_path
@@ -95,7 +96,6 @@ RSpec.describe BooksController, type: :request do
   describe "GET #books(:id)/reader - read the book in PDF viewer" do
     it "returns http success" do
       get reader_book_path(book_with_content)
-      attached_file_name = book_with_content.content.filename.to_s
 
       expect(response).to be_successful
       expect(response.body).to include(attached_file_name)
