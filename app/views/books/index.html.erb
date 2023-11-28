@@ -4,10 +4,10 @@
 
     <div class="ml-auto flex space-x-4">
       <%= simple_form_for :search, url: search_books_path, method: :get, html: { role: 'search' } do |f| %>
-        <div class="flex items-center space-x-2">
+        <search class="flex items-center space-x-2">
           <%= f.input :query, as: :search, input_html: { placeholder: "Search in library..." }, label: false %>
           <%= f.submit "Search", class: "btn-gray" %>
-        </div>
+        </search>
       <% end %>
       <% if user_signed_in? %>
         <%= link_to "New book", new_book_path, class: "btn-primary" %>

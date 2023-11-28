@@ -42,10 +42,8 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = BookSearch.search(params[:search][:query])
-    
+    @books = BookSearch.search(params[:search][:query]).presence || collection
     flash.now[:notice] = "Books found: #{@books.count}"
-    @books = collection unless @books.any?
 
     render :index
   end
