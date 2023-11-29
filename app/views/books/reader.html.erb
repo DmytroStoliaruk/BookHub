@@ -1,9 +1,9 @@
-<div class="flex">
-  <h1 class="fixed left-0 font-bold text-4xl w-64"><%= @book.title %> </h1> 
-  <div id="adobe-dc-view"></div>
+<div class="flex"> 
+<h1 class="fixed left-0 font-bold text-4xl w-64"><%= @book.title %> </h1> 
+  <div id="adobe-dc-view" data-controller="adobe-viewer" 
+                          data-adobe-viewer-url="<%= rails_blob_path(@book.content, only_path: true) %>" 
+                          data-adobe-viewer-filename="<%= @book.content.filename %>"
+                          data-adobe-viewer-element-id="adobe-dc-view">
+  </div>
   <%= link_to "Back to books", books_path, class: "fixed right-0 btn-gray" %>
 </div>
-
-
-<div id="adobe-dc-view" data-controller="adobe-viewer" data-adobe-viewer-url="<%= rails_blob_path(@book.content, only_path: true) %>" data-adobe-viewer-filename="<%= @book.content.filename %>"></div>
-<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
