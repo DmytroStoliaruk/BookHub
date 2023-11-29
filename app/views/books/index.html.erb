@@ -9,9 +9,7 @@
           <%= f.submit "Search", class: "btn-gray" %>
         </div>
       <% end %>
-      <% if user_signed_in? %>
-        <%= link_to "New book", new_book_path, class: "btn-primary" %>
-      <% end %>
+      <%= link_to_if user_signed_in?, "New book", new_book_path, class: "btn-primary" %>
     </search>
   </div>
 
