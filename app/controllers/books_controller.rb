@@ -50,6 +50,10 @@ class BooksController < ApplicationController
     render :index
   end
 
+  def reader
+    @book = resourse
+  end  
+
   private
 
   def book_params

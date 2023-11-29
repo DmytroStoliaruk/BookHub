@@ -4,4 +4,5 @@ class BooksIndex < Chewy::Index
   field :title
   field :author
   field :description
+  reset
 end

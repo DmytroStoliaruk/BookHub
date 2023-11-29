@@ -26,12 +26,7 @@ FactoryBot.define do
     end
 
     trait :with_content do
-      after(:create) do |book|
-        content_path = Rails.root.join("app", "assets", "book_content", "ruby-tutorial.pdf")
-        book.content.attach(io: File.open(content_path),
-                          filename: "ruby-tutorial.pdf",
-                          content_type: "application/pdf")
-      end
+      content { Rack::Test::UploadedFile.new("app/assets/book_content/ruby-tutorial.pdf", "application/pdf") }
     end
   end
 end
