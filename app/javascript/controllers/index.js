@@ -6,6 +6,3 @@ import { application } from "./application"
 
 import AdobeViewerController from "./adobe_viewer_controller"
 application.register("adobe-viewer", AdobeViewerController)
-
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
