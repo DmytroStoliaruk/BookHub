@@ -9,18 +9,6 @@ FactoryBot.define do
       title { "" }
     end
 
-    trait :search_params1 do
-      title { "Book number one" }
-      author { "John Smith" }
-      description { "About nature" }
-    end
-
-    trait :search_params2 do
-      title { "Book number two" }
-      author { "Sara Adams" }
-      description { "About furure" }
-    end
-
     trait :with_cover do
       cover { Rack::Test::UploadedFile.new("app/assets/images/book_cover.png", "image/jpeg") }
     end

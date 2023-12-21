@@ -1,22 +1,27 @@
 class BookSearch
-  def initialize(fields, operator = "AND")
-    @fields = fields
-    @operator = operator
+  
+  def initialize
+    @fields = [:title, :author, :description]
   end
-
-  def self.instance(fields, operator = "AND")
-    @instance ||= new(fields, operator)
+  
+  def self.instance
+    @instance ||= new
   end
 
   def search(query)
-    query_string = {
-      query_string: {
-        fields: @fields,
-        query: query,
-        default_operator: @operator
-      }
-    }
+    query_string = build_query_string(query)
 
     BooksIndex.query(query_string).objects
+  end
+
+  private
+
+  def build_query_string(query)
+    {
+      query_string: {
+        fields: @fields,
+        query: query
+      }
+    }
   end
 end

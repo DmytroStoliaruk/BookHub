@@ -2,15 +2,20 @@
   <div class="flex items-center">
     <h1 class="font-bold text-4xl">List of books</h1>
 
-    <search class="ml-auto flex space-x-4">
+    <search class="ml-auto flex space-x-4 m-2">
       <%= simple_form_for :search, url: search_books_path, method: :get do |f| %>
         <div class="flex items-center space-x-2">
           <%= f.input :query, as: :search, input_html: { placeholder: "Search in library..." }, label: false %>
           <%= f.submit "Search", class: "btn-gray" %>
         </div>
       <% end %>
-      <%= link_to_if user_signed_in?, "New book", new_book_path, class: "btn-primary" %>
     </search>
+    <% if (@books.count < Book.count) %>
+      <%= link_to "Back to all books", books_path, class: "btn-gray" %>
+    <% end %>  
+    <% if user_signed_in? %>
+      <%= link_to  "New book", new_book_path, class: "btn-primary" %>
+    <% end %>  
   </div>
 
   <div class="books-list">

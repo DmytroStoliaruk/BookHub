@@ -42,9 +42,9 @@ class BooksController < ApplicationController
   end
 
   def search
-    book_searcher = BookSearch.instance([:title, :author, :description], "OR")
+    book_searcher = BookSearch.instance
     search_results = book_searcher.search (params[:search][:query])
-    @books = search_results.presence || collection
+    @books = search_results 
     flash.now[:notice] = "Books found: #{search_results.count}"
 
     render :index

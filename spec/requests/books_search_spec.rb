@@ -3,8 +3,9 @@ require "rails_helper"
 RSpec.describe BookSearch, type: :request do
   describe 'GET #search' do
     let!(:book) { create(:book) }
-    let!(:book1) { create(:book, :search_params1) }
-    let!(:book2) { create(:book, :search_params2) }
+    let!(:book1) { create(:book, title: "Book number one", author: "John Smith", description: "About nature") }
+    let!(:book2) { create(:book, title: "Book number two", author: "Sara Adams", description: "About future") }
+
 
     before(:each) do
       BooksIndex.reset
@@ -21,12 +22,12 @@ RSpec.describe BookSearch, type: :request do
     end
 
     describe "when the search query is empty" do
-      it "returns all books as the default collection" do
+      it "check that collection is empty" do
         get search_books_path, params: { search: { query: "" } }
 
-        expect(response.body).to include(CGI.escapeHTML(book.title))
-        expect(response.body).to include(CGI.escapeHTML(book1.title))
-        expect(response.body).to include(CGI.escapeHTML(book2.title))
+        expect(response.body).not_to include(CGI.escapeHTML(book.title))
+        expect(response.body).not_to include(CGI.escapeHTML(book1.title))
+        expect(response.body).not_to include(CGI.escapeHTML(book2.title))
       end
     end
   end

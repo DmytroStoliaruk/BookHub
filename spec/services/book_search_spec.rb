@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe BookSearch do
-  let!(:book1) { create(:book, :search_params1) }
-  let!(:book2) { create(:book, :search_params2) }
-  let (:book_searcher) { BookSearch.instance([:title, :author, :description]) }
+  let!(:book1) { create(:book, title: "Book number one", author: "John Smith", description: "About nature") }
+  let!(:book2) { create(:book, title: "Book number two", author: "Sara Adams", description: "About future") }
+
+  let (:book_searcher) { BookSearch.instance }
 
   
   subject { book_searcher.search(query) }
