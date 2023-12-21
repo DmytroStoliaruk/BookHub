@@ -10,12 +10,7 @@ FactoryBot.define do
     end
 
     trait :with_cover do
-      after(:create) do |book|
-        cover_path = Rails.root.join("app", "assets", "images", "book_cover.png")
-        book.cover.attach(io: File.open(cover_path),
-                          filename: "book_cover.png",
-                          content_type: "image/jpeg")
-      end
+      cover { Rack::Test::UploadedFile.new("app/assets/images/book_cover.png", "image/jpeg") }
     end
 
     trait :with_content do

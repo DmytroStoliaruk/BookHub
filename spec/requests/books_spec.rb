@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Books", type: :request do
+RSpec.describe BooksController, type: :request do
   let!(:book) { create(:book) }
   let(:valid_params) { attributes_for(:book) }
   let(:invalid_params) { attributes_for(:book).merge(title: "") }
@@ -40,7 +40,6 @@ RSpec.describe "Books", type: :request do
       expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
-
 
   describe "POST #create" do
     it "creates a new book" do

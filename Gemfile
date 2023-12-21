@@ -26,6 +26,7 @@ gem "bootsnap", require: false
 # Additional gems
 gem "devise"
 gem "simple_form"
+gem "chewy", "~> 7.3", ">= 7.3.4"
 
 group :development, :test do
   gem "debug", platforms: [:mri, :mingw, :x64_mingw]

@@ -41,10 +41,19 @@ class BooksController < ApplicationController
     redirect_to books_path, alert: "Book was successfully destroyed.", status: :see_other
   end
 
+  def search
+    book_searcher = BookSearch.instance
+    search_results = book_searcher.search (params[:search][:query])
+    @books = search_results 
+    flash.now[:notice] = "Books found: #{search_results.count}"
+
+    render :index
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :description, :cover, :content)
+    params.require(:book).permit(:title, :author, :isbn, :description, :cover, :content, :search)
   end
 
   def collection
