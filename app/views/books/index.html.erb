@@ -10,7 +10,7 @@
         </div>
       <% end %>
     </search>
-    <% if (@books.count < Book.count) %>
+    <% if (Book.filtered_books?(@books)) %>
       <%= link_to "Back to all books", books_path, class: "btn-gray" %>
     <% end %>  
     <% if user_signed_in? %>

@@ -9,4 +9,8 @@ class Book < ApplicationRecord
   validates :isbn, presence: true
 
   scope :ordered, -> { order("title") }
+
+  def self.filtered_books?(books)
+    books.count < Book.count
+  end
 end

@@ -25,9 +25,7 @@ RSpec.describe BookSearch, type: :request do
       it "check that collection is empty" do
         get search_books_path, params: { search: { query: "" } }
 
-        expect(response.body).not_to include(CGI.escapeHTML(book.title))
-        expect(response.body).not_to include(CGI.escapeHTML(book1.title))
-        expect(response.body).not_to include(CGI.escapeHTML(book2.title))
+        expect(response.body).to include(CGI.escapeHTML("Books found: 0"))
       end
     end
   end
